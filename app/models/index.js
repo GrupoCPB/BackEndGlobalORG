@@ -3,6 +3,12 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const envConfigs =  require('../config/config');
 
+const { Usuario } = require('./app/model');
+const { Voluntario } = require('./app/model');
+const { Empresa } = require('./app/model');
+const { Ong } = require('./app/model');
+const { Causa } = require('./app/model');
+
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = envConfigs[env];

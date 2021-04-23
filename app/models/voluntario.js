@@ -1,38 +1,38 @@
 module.exports = (sequelize, DataTypes) => {
   const Voluntario = sequelize.define('Voluntario', {
-    idVoluntario: DataTypes.INTEGER,
+    id_voluntario: DataTypes.INTEGER,
     apelido: DataTypes.STRING,
     cpf: DataTypes.STRING,
-    dataNascimento: DataTypes.DATE,
+    data_nascimento: DataTypes.DATE,
     genero: DataTypes.INTEGER,
     sexualidade: DataTypes.INTEGER,
-    portadorDeficiencia: DataTypes.BOOLEAN,
+    portador_deficiencia: DataTypes.BOOLEAN,
     profissao: DataTypes.STRING,
     formacao: DataTypes.INTEGER,
     habilidades: DataTypes.TEXT,
     telefone: DataTypes.STRING,
-    telefoneOutro: DataTypes.STRING,
+    telefone_outro: DataTypes.STRING,
     endereco: DataTypes.STRING,
     complemento: DataTypes.STRING, 
     municipio: DataTypes.STRING,
-    UF: DataTypes.STRING,
+    uf: DataTypes.STRING,
     cep: DataTypes.STRING,
-    linkCV: DataTypes.STRING,
+    link_cv: DataTypes.STRING,
     sobre: DataTypes.TEXT,
-    fotoCapa: DataTypes.STRING,
-    fotoRosto: DataTypes.STRING
+    foto_capa: DataTypes.STRING,
+    foto_rosto: DataTypes.STRING
   });
 
   Voluntario.associate = function(models) {
     // associations can be defined here
     Voluntario.belongsTo(models.Post, {
-      foreignKey: 'idUsuario',
+      foreignKey: 'id_usuario',
       as: 'usuario',
       onDelete: 'CASCADE',
     });
 
     Voluntario.hasMany(models.Post, {
-      foreignKey: 'idVaga',
+      foreignKey: 'id_vaga',
       as: 'vagas',
       onDelete: 'CASCADE',
     });

@@ -1,27 +1,27 @@
 module.exports = (sequelize, DataTypes) => {
   const Vaga = sequelize.define('Vaga', {
-    idVaga: DataTypes.INTEGER,
+    id_vaga: DataTypes.INTEGER,
     descricao: DataTypes.STRING,
-    dataCriacao: DataTypes.DATE,
-    quantidadeVagas: DataTypes.INTEGER,
-    dataFechamento: DataTypes.DATE
+    data_criacao: DataTypes.DATE,
+    quantidade_vagas: DataTypes.INTEGER,
+    data_fechamento: DataTypes.DATE
   });
 
   Vaga.associate = function(models) {
     Vaga.hasMany(models.Post, {
-      foreignKey: 'idVaga',
+      foreignKey: 'id_vaga',
       as: 'candidatos',
       onDelete: 'CASCADE',
     });
 
     Vaga.belongsTo(models.Post, {
-      foreignKey: 'idOng',
+      foreignKey: 'id_ong',
       as: 'ong',
       onDelete: 'CASCADE',
     });
 
     Vaga.belongsTo(models.Post, {
-      foreignKey: 'idEmpresa',
+      foreignKey: 'id_empresa',
       as: 'empresa',
       onDelete: 'CASCADE',
     });

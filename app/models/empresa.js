@@ -1,24 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
   const Empresa = sequelize.define('Empresa', {
-    idEmpresa: DataTypes.INTEGER,
-    razaoSocial: DataTypes.STRING,
+    id_empresa: DataTypes.INTEGER,
+    razao_social: DataTypes.STRING,
     cnpj: DataTypes.STRING,
     endereco: DataTypes.STRING,
     complemento: DataTypes.STRING,
     municipio: DataTypes.STRING,
-    UF: DataTypes.STRING,
+    uf: DataTypes.STRING,
     cep: DataTypes.STRING
   });
 
   Empresa.associate = function(models) {
     Empresa.hasMany(models.Post, {
-      foreignKey: 'idEmpresa',
+      foreignKey: 'id_empresa',
       as: 'usuarios',
       onDelete: 'CASCADE',
     });
 
     Empresa.hasMany(models.Post, {
-      foreignKey: 'idEmpresa',
+      foreignKey: 'id_empresa',
       as: 'vagas',
       onDelete: 'CASCADE',
     });

@@ -2,13 +2,13 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Empresas', {
-      idEmpresa: {
+      id_empresa: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      razaoSocial: {
+      razao_social: {
         type: Sequelize.STRING
       },
       cnpj: {
@@ -23,7 +23,7 @@ module.exports = {
       municipio: {
         type: Sequelize.STRING
       },
-      UF: {
+      uf: {
         type: Sequelize.STRING
       },
       cep: {

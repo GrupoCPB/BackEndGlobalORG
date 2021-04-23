@@ -2,25 +2,22 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Vagas', {
-      id: {
+      id_vaga: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idVaga: {
-        type: Sequelize.INTEGER
-      },
       descricao: {
         type: Sequelize.STRING
       },
-      dataCriacao: {
+      data_criacao: {
         type: Sequelize.DATE
       },
-      quantidadeVagas: {
+      quantidade_vagas: {
         type: Sequelize.INTEGER
       },
-      dataFechamento: {
+      data_fechamento: {
         type: Sequelize.DATE
       },
       createdAt: {

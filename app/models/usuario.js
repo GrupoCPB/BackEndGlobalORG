@@ -1,21 +1,21 @@
 module.exports = (sequelize, DataTypes) => {
   const Usuario = sequelize.define('Usuario', {
-    idUsuario: DataTypes.INTEGER,
+    id_usuario: DataTypes.INTEGER,
     nome: DataTypes.STRING,
     email: DataTypes.STRING,
-    dataCriacao: DataTypes.DATE,
-    tipoUsuario: DataTypes.INTEGER
+    data_criacao: DataTypes.DATE,
+    tipo_usuario: DataTypes.INTEGER
   });
 
   Usuario.associate = function(models) {
     Usuario.belongsTo(models.Post, {
-      foreignKey: 'idOng',
+      foreignKey: 'id_ong',
       as: 'ong',
       onDelete: 'CASCADE',
     });
 
     Usuario.belongsTo(models.Post, {
-      foreignKey: 'idEmpresa',
+      foreignKey: 'id_empresa',
       as: 'empresa',
       onDelete: 'CASCADE',
     });

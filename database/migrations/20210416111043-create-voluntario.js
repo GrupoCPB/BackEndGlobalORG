@@ -2,7 +2,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Voluntarios', {
-      idVoluntario: {
+      id_voluntario: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -14,7 +14,7 @@ module.exports = {
       cpf: {
         type: Sequelize.STRING
       },
-      dataNascimento: {
+      data_nascimento: {
         type: Sequelize.DATE
       },
       genero: {
@@ -23,7 +23,7 @@ module.exports = {
       sexualidade: {
         type: Sequelize.INTEGER
       },  
-      portadorDeficiencia: {
+      portador_deficiencia: {
         type: Sequelize.BOOLEAN
       },
       profissao: {
@@ -38,7 +38,7 @@ module.exports = {
       telefone: {
         type: Sequelize.STRING
       },
-      telefoneOutro: {
+      telefone_outro: {
         type: Sequelize.STRING
       },
       endereco: {
@@ -50,28 +50,22 @@ module.exports = {
       municipio: {
         type: Sequelize.STRING
       },
-      UF: {
+      uf: {
         type: Sequelize.STRING
       },
       cep: {
         type: Sequelize.STRING
       },
-      linkCV: {
+      link_cv: {
         type: Sequelize.STRING
       },
       sobre: {
         type: Sequelize.TEXT
       },
-      fotoCapa: {
+      foto_capa: {
         type: Sequelize.STRING
       },
-      fotoRosto: {
-        type: Sequelize.STRING
-      },
-      municipio: {
-        type: Sequelize.STRING
-      },
-      UF: {
+      foto_rosto: {
         type: Sequelize.STRING
       },
       createdAt: {

@@ -4,7 +4,7 @@ const {
 } = require('sequelize');*/
 module.exports = (sequelize, DataTypes) => {
   const Causa = sequelize.define('Causa', {
-    idCausa: DataTypes.INTEGER,
+    id_causa: DataTypes.INTEGER,
     nome: DataTypes.STRING
   });
 

@@ -1,17 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
   const Ong = sequelize.define('Ong', {
-    idOng: DataTypes.INTEGER,
+    id_ong: DataTypes.INTEGER,
     nome: DataTypes.STRING,
     cnpj: DataTypes.STRING,
     endereco: DataTypes.STRING,
     complemento: DataTypes.STRING,
     municipio: DataTypes.STRING,
-    UF: DataTypes.STRING,
+    uf: DataTypes.STRING,
     cep: DataTypes.STRING,
-    informacaoGeral: DataTypes.TEXT,
+    informacao_geral: DataTypes.TEXT,
     resumo: DataTypes.TEXT,
     imagem: DataTypes.STRING,
-    quantidadeBeneficiados: DataTypes.INTEGER,
+    quantidade_beneficiados: DataTypes.INTEGER,
     telefone: DataTypes.STRING,
     email: DataTypes.STRING,
     site: DataTypes.STRING,
@@ -22,19 +22,19 @@ module.exports = (sequelize, DataTypes) => {
 
   Ong.associate = function(models) {
     Ong.hasMany(models.Post, {
-      foreignKey: 'idOng',
+      foreignKey: 'id_ong',
       as: 'usuarios',
       onDelete: 'CASCADE',
     });
 
     Ong.hasMany(models.Post, {
-      foreignKey: 'idOng',
+      foreignKey: 'id_ong',
       as: 'causas',
       onDelete: 'CASCADE',
     });
 
     Ong.hasMany(models.Post, {
-      foreignKey: 'idOng',
+      foreignKey: 'id_ong',
       as: 'vagas',
       onDelete: 'CASCADE',
     });

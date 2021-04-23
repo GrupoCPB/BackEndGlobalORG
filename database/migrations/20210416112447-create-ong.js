@@ -2,7 +2,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Ongs', {
-      idOng: {
+      id_ong: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -23,13 +23,13 @@ module.exports = {
       municipio: {
         type: Sequelize.STRING
       },
-      UF: {
+      uf: {
         type: Sequelize.STRING
       },
       cep: {
         type: Sequelize.STRING
       },
-      informacaoGeral: {
+      informacao_geral: {
         type: Sequelize.STRING
       },
       resumo: {
@@ -38,7 +38,7 @@ module.exports = {
       imagem: {
         type: Sequelize.STRING
       },
-      quantidadeBeneficiados: {
+      quantidade_beneficiados: {
         type: Sequelize.INTEGER
       },
       telefone: {

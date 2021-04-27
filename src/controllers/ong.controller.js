@@ -14,6 +14,25 @@ exports.createOng = async (req, res) => {
   });
 };
 
+// ==> Método responsável por atualizar um 'Ong' pelo 'Id':
+exports.updateOngById = async (req, res) => {
+  const ongId = parseInt(req.params.id);
+  const { nome } = req.body;
+  const response = await db.query(
+    "UPDATE ong SET nome = $1 WHERE id_ong = $2",
+    [nome, ongId]
+  );
+  res.status(200).send({ message: "Ong Updated Successfully!" });
+};
+
+// ==> Método responsável por excluir um 'Ong' pelo 'Id':
+exports.deleteOngById = async (req, res) => {
+  const ongId = parseInt(req.params.id);
+  await db.query('DELETE FROM ong WHERE id_ong = $1', [
+    ongId
+  ]);
+  res.status(200).send({ message: 'Ong deleted successfully!', ongId });
+};
 
 // ==> Método responsável por listar todos os 'Ongs':
 exports.listAllOngs = async (req, res) => {

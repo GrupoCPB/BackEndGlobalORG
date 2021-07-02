@@ -1,6 +1,6 @@
 # globalorg-api-backend
 
-#crie um banco de dados em um container docker caso não tenho instalado na sua maquina
+#crie um banco de dados em um container docker caso não tenho instalado na sua maquina:
 docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
 
 

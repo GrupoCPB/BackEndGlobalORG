@@ -1,14 +1,41 @@
 # globalorg-api-backend
 
-#crie um banco de dados em um container docker caso não tenho instalado na sua maquina:
+## Começando
+
+### Requerimentos
+
+- Tenha o [Docker](https://www.docker.com/get-started) instalado e rodando.
+
+**Clone o projeto e acesse a pasta**
+
+```bash
+git clone https://github.com/GrupoCPB/globalorg-api-backend.git && cd globalorg-api-backend
+```
+
+**Siga os passos**
+
+- Com docker rodando use o comando para criar a database
+
+```bash
 docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+```
 
+- Instale as dependências
 
-#Para iniciar o projeto uso os seguintes comandos:
-yarn install
+```bash
+yarn
+```
 
-*para  criar a tabela no banco de dados postgres:
+- Crie as tabelas no banco de dados postgres
+
+```bash
 yarn typeorm migration:run
+```
 
-*para subir o servidor de desenvolvimento:
+- Para subir servidor de desenvolvimento
+
+```bash
 yarn dev
+```
+
+- Com o servidor rodando, acesse [docs](http://localhost:3333/api-docs) para ter informações das rotas.

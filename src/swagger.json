@@ -6,10 +6,10 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/users": {
+        "/voluntary": {
             "post": {
-                "tags": ["Users"],
-                "summary": "Criar novo usuário",
+                "tags": ["Voluntaries"],
+                "summary": "Criar novo usuário voluntário",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -69,15 +69,15 @@
                         }
                     },
                     "400": {
-                        "description": "User already exists"
+                        "description": "Voluntary already exists"
                     }
                 }
             }
         },
         "/auth": {
             "post": {
-                "tags": ["Users"],
-                "summary": "autenticação",
+                "tags": ["Voluntaries"],
+                "summary": "Autenticação de voluntário",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -112,7 +112,7 @@
                         }
                     },
                     "400": {
-                        "description": "User does not exist!"
+                        "description": "Voluntary does not exist!"
                     }
                 }
             }

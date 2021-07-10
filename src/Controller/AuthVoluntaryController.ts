@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
-import AuthUserService from '../services/AuthUserService';
+import AuthVoluntaryService from '../services/AuthVoluntaryService';
 
 export default class AuthUserController {
   async handle(req: Request, res: Response) {
     const { email, password } = req.body;
 
-    const authUserService = new AuthUserService();
+    const authVoluntaryService = new AuthVoluntaryService();
 
-    const token = await authUserService.execute({
+    const token = await authVoluntaryService.execute({
       email,
       password,
     });

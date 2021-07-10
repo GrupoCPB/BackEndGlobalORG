@@ -2,24 +2,24 @@ import { getCustomRepository } from 'typeorm';
 import { sign } from 'jsonwebtoken';
 import { compare } from 'bcryptjs';
 
-import UserRepository from '../repositories/UsersRepositories';
+import VoluntariesRepository from '../repositories/VoluntariesRepositories';
 
 interface IAuthRequest {
   email: string;
   password: string;
 }
 
-export default class AuthUserService {
+export default class AuthvoluntaryService {
   async execute({ email, password }: IAuthRequest) {
-    const userRepositories = getCustomRepository(UserRepository);
+    const voluntaryRepositories = getCustomRepository(VoluntariesRepository);
 
-    const user = await userRepositories.findOne({ email });
+    const voluntary = await voluntaryRepositories.findOne({ email });
 
-    if (!user) {
+    if (!voluntary) {
       throw new Error('Error in authentication, password or email incorrect');
     }
 
-    const passwordMatch = await compare(password, user.password);
+    const passwordMatch = await compare(password, voluntary.password);
 
     if (!passwordMatch) {
       throw new Error('Error in authentication, password or email incorrect');
@@ -27,11 +27,11 @@ export default class AuthUserService {
     // refresh token
     const token = sign(
       {
-        email: user.email,
+        email: voluntary.email,
       },
       'b17b6b6b62e97fce0eb6117dc5fa67b8',
       {
-        subject: user.id,
+        subject: voluntary.id,
         expiresIn: '1d',
       },
     );

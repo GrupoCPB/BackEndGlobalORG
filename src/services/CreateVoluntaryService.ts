@@ -31,7 +31,7 @@ export default class CreateVoluntaryService {
     const volutaryWithoutPassword = {
       name: newVoluntary.name,
       email: newVoluntary.email,
-    }
+    };
 
     return volutaryWithoutPassword;
   }

@@ -1,19 +1,25 @@
-import { getCustomRepository } from 'typeorm';
+import { getRepository } from 'typeorm';
 import { sign } from 'jsonwebtoken';
 import { compare } from 'bcryptjs';
+import authConfig from '../config/auth';
 
-import VoluntariesRepository from '../repositories/VoluntariesRepositories';
+import Voluntary from '../models/Voluntary';
 
 interface IAuthRequest {
   email: string;
   password: string;
 }
 
-export default class AuthvoluntaryService {
-  async execute({ email, password }: IAuthRequest) {
-    const voluntaryRepositories = getCustomRepository(VoluntariesRepository);
+interface Response {
+  voluntary: Voluntary;
+  token: string;
+}
 
-    const voluntary = await voluntaryRepositories.findOne({ email });
+export default class AuthvoluntaryService {
+  async execute({ email, password }: IAuthRequest): Promise<Response> {
+    const voluntaryRepositories = getRepository(Voluntary);
+
+    const voluntary = await voluntaryRepositories.findOne({ where: { email } });
 
     if (!voluntary) {
       throw new Error('Error in authentication, password or email incorrect');
@@ -25,16 +31,16 @@ export default class AuthvoluntaryService {
       throw new Error('Error in authentication, password or email incorrect');
     }
     // refresh token
-    const token = sign(
-      {
-        email: voluntary.email,
-      },
-      'b17b6b6b62e97fce0eb6117dc5fa67b8',
-      {
-        subject: voluntary.id,
-        expiresIn: '1d',
-      },
-    );
-    return token;
+
+    const { secret, expiresIn } = authConfig.jwt;
+    const token = sign({}, secret, {
+      subject: voluntary.id,
+      expiresIn,
+    });
+
+    return {
+      voluntary,
+      token,
+    };
   }
 }

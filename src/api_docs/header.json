@@ -1,0 +1,10 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API GlobalOrg",
+    "description": "Essa é uma documentação para o backend da GlobalOrg",
+    "version": "1.0.0"
+  },
+  "basePath": "/api",
+  "schemes": ["http"]
+}

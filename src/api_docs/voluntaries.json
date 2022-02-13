@@ -1,0 +1,113 @@
+{
+  "/voluntary": {
+    "post": {
+      "tags": ["Voluntaries"],
+      "summary": "Criar novo usuário voluntário",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "name": "global",
+                "email": "globalorg@globalorg.com",
+                "password": "examplepassword"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Operação realizada com sucesso",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "global"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "globalorg@globalorg.com"
+                  },
+                  "id": {
+                    "type": "string",
+                    "example": "004aadf4-8e1a-4450-905b-6039179f52da"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "example": "2021-03-10T23:13:14.1272"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "example": "2021-03-10T23:17:14.1272"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Voluntary already exists"
+        }
+      }
+    }
+  },
+  "/auth": {
+    "post": {
+      "tags": ["Voluntaries"],
+      "summary": "Autenticação de voluntário",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "email": "globalorg@globalorg.com",
+                "password": "12345678"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Operação realizada com sucesso",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsImlhdCI6MTYyNTUwMDU0OSwiZXhwIjoxNjI1NTg2OTQ5LCJzdWIiOiJmOTVlNmRkMC04YTJiLTQyMTItOTcyYi1kMDAzZWUxYTlkZTMifQ.d9DODIo19g1BRvUGYKr0-ASZqsFfZTAvuAot75xbrmw"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Voluntary does not exist!"
+        }
+      }
+    }
+  }
+}

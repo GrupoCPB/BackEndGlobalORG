@@ -4,7 +4,6 @@ about: Create a report to help us improve
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 **Describe the error**
@@ -17,8 +16,9 @@ If applicable, add localization of error [e.g. Routes/index.ts]
 If applicable, add screenshots to help explain your problem.
 
 **Node**
- - Version [e.g. 14.0.0]
- - Package Manager [e.g. Yarn, NPM]
+
+- Version [e.g. 14.0.0]
+- Package Manager [e.g. Yarn, NPM]
 
 **Additional context**
 Add any other context about the problem here.

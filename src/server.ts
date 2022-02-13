@@ -1,11 +1,9 @@
-import dotenv from 'dotenv';
-// import './database';
+import 'dotenv/config';
+
 import app from './app';
 import { swaggerDoc, swaggerServe } from './api_docs';
 
-dotenv.config();
-
 app.use('/api-docs', swaggerServe, swaggerDoc);
 
-const port = process.env.PORT;
-app.listen(port, () => console.log(`server running on ${port}`));
+const { APP_PORT } = process.env;
+app.listen(APP_PORT, () => console.log(`server running on ${APP_PORT}`));

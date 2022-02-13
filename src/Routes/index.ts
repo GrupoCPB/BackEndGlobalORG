@@ -9,6 +9,8 @@ const routes = Router();
 const authVoluntaryController = new AuthVoluntaryController();
 const createVoluntaryController = new CreateVoluntaryController();
 
+routes.get('/', (_, res) => res.json('Base Url'));
+
 routes.post('/api/voluntary/auth', authVoluntaryController.handle);
 routes.post('/api/voluntary', createVoluntaryController.handle);
 

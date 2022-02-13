@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
 import AuthVoluntaryController from '../Controller/AuthVoluntaryController';
 import CreateVoluntaryController from '../Controller/CreateVoluntaryController';
 import ensureAuthenticated from '../middleware/ensureAuthenticated';

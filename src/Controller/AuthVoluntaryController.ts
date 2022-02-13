@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import AuthVoluntaryService from '../services/AuthVoluntaryService';
 
-export default class AuthUserController {
+export default class AuthVoluntaryController {
   async handle(req: Request, res: Response) {
     const { email, password } = req.body;
 

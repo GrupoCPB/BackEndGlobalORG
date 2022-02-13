@@ -15,7 +15,7 @@ interface Response {
   token: string;
 }
 
-export default class AuthvoluntaryService {
+export default class AuthVoluntaryService {
   async execute({ email, password }: IAuthRequest): Promise<Response> {
     const voluntaryRepositories = getRepository(Voluntary);
 

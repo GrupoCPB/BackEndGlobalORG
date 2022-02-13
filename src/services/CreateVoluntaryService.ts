@@ -21,18 +21,18 @@ export default class CreateVoluntaryService {
       throw new Error('Voluntary already exists');
     }
     const passwordHash = await hash(password, 8);
-    const newVoluntary = await voluntariesRepository.create({
+    const newVoluntary = voluntariesRepository.create({
       name,
       email,
       password: passwordHash,
     });
     await voluntariesRepository.save(newVoluntary);
 
-    const volutaryWithoutPassword = {
+    const voluntaryWithoutPassword = {
       name: newVoluntary.name,
       email: newVoluntary.email,
     };
 
-    return volutaryWithoutPassword;
+    return voluntaryWithoutPassword;
   }
 }

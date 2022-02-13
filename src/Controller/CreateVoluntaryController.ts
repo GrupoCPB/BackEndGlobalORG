@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import CreateVoluntaryService from '../services/CreateVoluntaryService';
 
-export default class CreateUserController {
+export default class CreateVoluntaryController {
   async handle(req: Request, res: Response) {
     const { name, email, password } = req.body;
 

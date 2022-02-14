@@ -21,7 +21,6 @@ export default class AuthVoluntaryService {
   async execute({ email, password }: IAuthRequest): Promise<Response> {
     const voluntaryRepo = getCustomRepository(VoluntariesRepository);
     const voluntary = await voluntaryRepo.findByEmail(email);
-    console.log(voluntary);
 
     if (!voluntary) {
       throw new Error('Error in authentication, password or email incorrect');

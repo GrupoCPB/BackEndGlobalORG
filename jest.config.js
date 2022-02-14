@@ -24,9 +24,9 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.ts',
     '!src/api_docs/**/*',
+    '!src/@types/**/*',
+    '!src/config/**/*',
     '!src/database/**/*',
-    '!src/@types/*',
-    '!src/config/*',
   ],
 
   // The directory where Jest should output its coverage files
@@ -142,7 +142,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: 'node',
+  testEnvironment: 'node',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

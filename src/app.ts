@@ -1,9 +1,8 @@
-import 'dotenv/config';
+import 'reflect-metadata';
 import express from 'express';
 import helmet from 'helmet';
 import promBundle from 'express-prom-bundle';
 
-import './database';
 import routes from './Routes';
 
 const app = express();

@@ -5,7 +5,7 @@ import { swaggerDoc, swaggerServe } from './api_docs';
 import clientDB from './database';
 
 clientDB.create();
-app.use('/api-docs', swaggerServe, swaggerDoc);
+app.use('/api/doc', swaggerServe, swaggerDoc);
 
 const { APP_PORT } = process.env;
 app.listen(APP_PORT, () =>

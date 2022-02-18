@@ -61,4 +61,4 @@ yarn[npm run] test
 
 ## Documentation
 
-With server development running, access `https://localhost:{PORT}/api/api-docs/`
+With server development running, access `https://localhost:{PORT}/api/doc`

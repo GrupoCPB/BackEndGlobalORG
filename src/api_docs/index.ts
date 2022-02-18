@@ -5,9 +5,17 @@ import header from './header.json';
 import { Voluntaries } from './paths';
 import { Authentication, Voluntary } from './schemas';
 
+const servers = () => {
+  if (process.env.NODE_ENV !== 'production') {
+    return { servers: [{ url: 'http://localhost:3001/api' }] };
+  }
+  return '';
+};
+
 const doc = {
   ...header,
   ...tags,
+  ...servers(),
   paths: {
     ...Voluntaries,
   },

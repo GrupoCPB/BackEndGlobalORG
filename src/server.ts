@@ -8,4 +8,6 @@ clientDB.create();
 app.use('/api-docs', swaggerServe, swaggerDoc);
 
 const { APP_PORT } = process.env;
-app.listen(APP_PORT, () => console.log(`server running on ${APP_PORT}`));
+app.listen(APP_PORT, () =>
+  console.log(`server running on http://localhost:${APP_PORT}`),
+);

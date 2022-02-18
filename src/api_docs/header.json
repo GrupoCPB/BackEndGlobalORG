@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "API GlobalOrg",
-    "description": "Documentation for backend da GlobalOrg"
-  },
-  "version": "1.0.0"
+    "description": "Documentation for backend da GlobalOrg",
+    "version": "1.0.0"
+  }
 }

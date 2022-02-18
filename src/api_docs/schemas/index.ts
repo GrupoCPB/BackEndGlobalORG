@@ -1,4 +1,4 @@
 import Authentication from './authentication.json';
-import Voluntary from './Voluntary.json';
+import Voluntary from './voluntary.json';
 
 export { Authentication, Voluntary };

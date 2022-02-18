@@ -7,9 +7,7 @@
       "requestBody": {
         "content": {
           "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Voluntary"
-            }
+            "schema": { "$ref": "#/components/schemas/Voluntary" }
           }
         }
       },
@@ -19,14 +17,22 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Voluntary"
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Global"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "globalorg@globalorg.com"
+                  }
+                }
               }
             }
           }
         },
-        "400": {
-          "description": "Voluntary already exists"
-        }
+        "400": { "description": "Voluntary already exists" }
       }
     }
   },
@@ -37,9 +43,7 @@
       "requestBody": {
         "content": {
           "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Authentication"
-            }
+            "schema": { "$ref": "#/components/schemas/Authentication" }
           }
         }
       },
@@ -57,9 +61,7 @@
             }
           }
         },
-        "400": {
-          "description": "Voluntary does not exist!"
-        }
+        "400": { "description": "Voluntary does not exist!" }
       }
     }
   }

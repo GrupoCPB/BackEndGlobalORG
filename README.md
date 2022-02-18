@@ -1,41 +1,64 @@
-# globalorg-api-backend
+<h1 align="center"> Back-end API GlobalOrg </h1>
 
-## Começando
+<div align="center">
+  <a href="https://sites.google.com/grupocpb.org/sitedosvoluntarios/quem-somos" target="_blank">
+  About us
+  </a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://t.me/VoluntariadoGrupoCPB" target="_blank">
+  Telegram
+  </a>
+</div>
 
-### Requerimentos
+<br>
 
-- Tenha o [Docker](https://www.docker.com/get-started) instalado e rodando.
+## Requirements
 
-**Clone o projeto e acesse a pasta**
+- [Node](https://nodejs.org/)
+- API Client [e.g. [Postman](https://postman.com), [Insomnia](https://insomnia.rest/)]
+- [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/install/)
 
-```bash
-git clone https://github.com/GrupoCPB/globalorg-api-backend.git && cd globalorg-api-backend
-```
+---
 
-**Siga os passos**
+## Contributing
 
-- Com docker rodando use o comando para criar a database
+This repository is currently under development. If you want to contribute please fork the repository and get your hands dirty, and make the changes as you'd like and submit the Pull request.
 
-```bash
-docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
-```
+---
 
-- Instale as dependências
+## Follow steps
 
-```bash
-yarn
-```
-
-- Crie as tabelas no banco de dados postgres
-
-```bash
-yarn typeorm migration:run
-```
-
-- Para subir servidor de desenvolvimento
+- With docker running use the following command
 
 ```bash
-yarn dev
+docker-compose up -d
 ```
 
-- Com o servidor rodando, acesse [docs](http://localhost:3333/api-docs) para ter informações das rotas.
+- Installing dependencies
+
+```bash
+yarn[npm install]
+```
+
+- Run migrations to create database
+
+```bash
+yarn[npm run] typeorm migration:run
+```
+
+- Run the development server with the following command
+
+```bash
+yarn[npm run] dev
+```
+
+- Run tests with the following command
+
+```bash
+yarn[npm run] test
+```
+
+---
+
+## Documentation
+
+With server development running, access `https://localhost:{PORT}/api/api-docs/`

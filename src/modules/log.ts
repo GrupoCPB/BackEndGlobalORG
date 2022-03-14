@@ -10,8 +10,7 @@ const levels = {
 
 const level = () => {
   const env = process.env.NODE_ENV || 'development';
-  const isDevelopment = env === 'development';
-  return isDevelopment ? 'debug' : 'warn';
+  return env === 'development' ? 'debug' : 'warn';
 };
 
 const colors = {
@@ -26,9 +25,9 @@ winston.addColors(colors);
 
 const format = winston.format.combine(
   winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss:ms' }),
-  winston.format.colorize({ all: true }),
+  // winston.format.colorize({ all: true }), //polluting log phrase
   winston.format.printf(
-    info => `${info.timestamp} ${info.level}: ${info.message}`,
+    (info) => `${info.timestamp} ${info.level}: ${info.message}`,
   ),
 );
 

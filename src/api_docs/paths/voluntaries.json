@@ -1,0 +1,68 @@
+{
+  "/voluntary": {
+    "post": {
+      "tags": ["Voluntaries"],
+      "summary": "Create new user",
+      "operationId": "createUser",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Voluntary" }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "User created successfully",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Global"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "globalorg@globalorg.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "400": { "description": "Voluntary already exists" }
+      }
+    }
+  },
+  "/voluntary/auth": {
+    "post": {
+      "tags": ["Voluntaries"],
+      "summary": "Voluntary authentication",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Authentication" }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Operação realizada com sucesso",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsImlhdCI6MTYyNTUwMDU0OSwiZXhwIjoxNjI1NTg2OTQ5LCJzdWIiOiJmOTVlNmRkMC04YTJiLTQyMTItOTcyYi1kMDAzZWUxYTlkZTMifQ.d9DODIo19g1BRvUGYKr0-ASZqsFfZTAvuAot75xbrmw"
+                }
+              }
+            }
+          }
+        },
+        "400": { "description": "Voluntary does not exist!" }
+      }
+    }
+  }
+}

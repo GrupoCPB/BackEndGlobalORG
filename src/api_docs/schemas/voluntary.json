@@ -1,0 +1,32 @@
+{
+  "Voluntary": {
+    "required": ["name", "email", "password"],
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "example": "Global"
+      },
+      "email": {
+        "type": "string",
+        "example": "globalorg@globalorg.com"
+      },
+      "password": {
+        "type": "string",
+        "example": "globalorg123!"
+      },
+      "id": {
+        "type": "string",
+        "example": "004aadf4-8e1a-4450-905b-6039179f52da"
+      },
+      "created_at": {
+        "type": "string",
+        "example": "2021-03-10T23:13:14.1272"
+      },
+      "updated_at": {
+        "type": "string",
+        "example": "2021-03-10T23:17:14.1272"
+      }
+    }
+  }
+}

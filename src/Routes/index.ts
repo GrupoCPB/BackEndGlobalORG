@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
 import AuthVoluntaryController from '../Controller/AuthVoluntaryController';
 import CreateVoluntaryController from '../Controller/CreateVoluntaryController';
 import ensureAuthenticated from '../middleware/ensureAuthenticated';
@@ -9,7 +9,9 @@ const routes = Router();
 const authVoluntaryController = new AuthVoluntaryController();
 const createVoluntaryController = new CreateVoluntaryController();
 
-routes.post('/api/auth', authVoluntaryController.handle);
+routes.get('/', (_, res) => res.json('Base Url'));
+
+routes.post('/api/voluntary/auth', authVoluntaryController.handle);
 routes.post('/api/voluntary', createVoluntaryController.handle);
 
 routes.post('/api/testeAuth', ensureAuthenticated, (req, res) => {

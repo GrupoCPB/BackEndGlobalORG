@@ -1,51 +1,48 @@
 {
-    "env": {
-        "es2021": true,
-        "node": true
-    },
-    "extends": [
-      "airbnb-base",
-      "plugin:@typescript-eslint/recommended",
-      "eslint:recommended",
-      "plugin:import/recommended",
-      "plugin:import/typescript",
+  "env": {
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
 
-      //"prettier/@typescript-eslint",
-      "plugin:prettier/recommended"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint",
-        "@typescript-eslint",
-        "prettier"
-    ],
-    "rules": {
-      "class-methods-use-this":"off",
-      "camelcase":"off",
-      "no-unused-vars": "off",
-      "no-shadow": "off",
-      "@typescript-eslint/no-shadow": ["error"],
-      "@typescript-eslint/consistent-type-definitions":"off",
-      "prettier/prettier": "error",
-      "import/extensions": [
-        "error",
-        "always",
-        {
-
-            "ts": "never"
-
-        }
+    //"prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "@typescript-eslint", "prettier"],
+  "rules": {
+    "class-methods-use-this": "off",
+    "camelcase": "off",
+    "no-unused-vars": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "prettier/prettier": "error",
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        "ts": "never"
+      }
     ]
-    },
-    "settings": {
-      "import/resolver": {
-        "node": {
-            "extensions": [".ts"],
-            "moduleDirectory": ["node_modules", "src/"]
-        }
-    }}
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts"],
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  }
 }

@@ -1,9 +1,11 @@
-import { getRepository } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
 import { sign } from 'jsonwebtoken';
 import { compare } from 'bcryptjs';
 import authConfig from '../config/auth';
 
 import Voluntary from '../models/Voluntary';
+import VoluntariesRepository from '../repositories/VoluntariesRepository';
+import Logger from '../modules/log';
 
 interface IAuthRequest {
   email: string;
@@ -15,11 +17,10 @@ interface Response {
   token: string;
 }
 
-export default class AuthvoluntaryService {
+export default class AuthVoluntaryService {
   async execute({ email, password }: IAuthRequest): Promise<Response> {
-    const voluntaryRepositories = getRepository(Voluntary);
-
-    const voluntary = await voluntaryRepositories.findOne({ where: { email } });
+    const voluntaryRepo = getCustomRepository(VoluntariesRepository);
+    const voluntary = await voluntaryRepo.findByEmail(email);
 
     if (!voluntary) {
       throw new Error('Error in authentication, password or email incorrect');

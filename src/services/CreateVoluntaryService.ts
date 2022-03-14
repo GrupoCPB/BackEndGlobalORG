@@ -1,6 +1,7 @@
-import { getCustomRepository } from 'typeorm';
 import { hash } from 'bcryptjs';
-import VoluntariesRepositories from '../repositories/VoluntariesRepositories';
+import { getCustomRepository } from 'typeorm';
+import Logger from '../modules/log';
+import VoluntariesRepository from '../repositories/VoluntariesRepository';
 
 interface IVoluntaryRequest {
   name: string;
@@ -10,29 +11,28 @@ interface IVoluntaryRequest {
 
 export default class CreateVoluntaryService {
   async execute({ name, email, password }: IVoluntaryRequest) {
-    const voluntariesRepository = getCustomRepository(VoluntariesRepositories);
-    if (!email) {
-      throw new Error('email incorrect');
+    const voluntaryRepo = getCustomRepository(VoluntariesRepository);
+    if (!email || !password || !name) {
+      throw new Error('Data not provided');
     }
-    const voluntaryAlreadyExists = await voluntariesRepository.findOne({
-      email,
-    });
-    if (voluntaryAlreadyExists) {
+    const voluntaryExists = await voluntaryRepo.findByEmail(email);
+    if (voluntaryExists) {
       throw new Error('Voluntary already exists');
     }
     const passwordHash = await hash(password, 8);
-    const newVoluntary = await voluntariesRepository.create({
+    const newVoluntary = voluntaryRepo.create({
       name,
       email,
       password: passwordHash,
     });
-    await voluntariesRepository.save(newVoluntary);
 
-    const volutaryWithoutPassword = {
+    await voluntaryRepo.save(newVoluntary);
+
+    const voluntaryWithoutPassword = {
       name: newVoluntary.name,
       email: newVoluntary.email,
     };
 
-    return volutaryWithoutPassword;
+    return voluntaryWithoutPassword;
   }
 }

@@ -1,27 +1,13 @@
-import express from 'express';
-import swaggerUi from 'swagger-ui-express';
-import * as dotenv from 'dotenv';
-import promBundle from 'express-prom-bundle';
-import helmet from 'helmet';
-import routes from './Routes/routes';
-import swaggerFile from './swagger.json';
+import 'dotenv/config';
 
-import './database';
+import app from './app';
+import { swaggerDoc, swaggerServe } from './api_docs';
+import clientDB from './database';
 
-const metricsMiddleware = promBundle({ includeMethod: true });
+clientDB.create();
+app.use('/api/doc', swaggerServe, swaggerDoc);
 
-dotenv.config();
-
-const app = express();
-app.use(helmet());
-
-app.use(express.json());
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
-
-app.use(metricsMiddleware);
-app.use(routes);
-
-const port = process.env.PORT;
-app.listen(port, () => {
-  console.log(`server running on ${port}`);
-});
+const { APP_PORT } = process.env;
+app.listen(APP_PORT, () =>
+  console.log(`server running on http://localhost:${APP_PORT}`),
+);

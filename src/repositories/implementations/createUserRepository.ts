@@ -13,9 +13,11 @@ export class CreateUserRepository implements IUsersRepository {
     return user;
   }
 
-  async save(_user: User): Promise<void> {
+  async save(_user: User): Promise<User> {
     const orm = getCustomRepository(UserRepository);
     const user = orm.create(_user);
     await orm.save(user);
+
+    return user;
   }
 }

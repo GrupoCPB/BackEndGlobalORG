@@ -19,10 +19,10 @@ module.exports = {
   password: isTestEnvironment || process.env.DB_PASSWORD,
   database: isTestEnvironment || process.env.DB_DATABASE,
   ...isTest(),
-  entities: ['./src/models/*.{ts,js}'],
+  entities: ['./src/entities/*.{ts,js}'],
   migrations: ['./src/database/migrations/*.{ts,js}'],
   cli: {
     migrationsDir: './src/database/migrations',
-    entitiesDir: 'src/models',
+    entitiesDir: 'src/entities',
   },
 };

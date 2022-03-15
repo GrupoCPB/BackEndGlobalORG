@@ -1,17 +1,12 @@
-import { compare, hashSync } from 'bcryptjs';
-import JWT from 'jsonwebtoken';
+import { hashSync } from 'bcryptjs';
 import { User } from '@/entities/Users';
 import { IUsersRepository } from '@/repositories/IUsersRepository';
-import { configJWT } from '@/config/jwt';
-
-type loginDTO = {
-  email: string;
-  password: string;
-};
+import { TLoginDTO } from './loginUser.dto';
+import { LoginUserUseCase } from './loginUser.usecase';
 
 class UsersRepositoryMock implements IUsersRepository {
   private users: User[] = [];
-  user?: loginDTO;
+  user?: TLoginDTO;
   callCount = 0;
   async findByEmail(email: string): Promise<User> {
     this.callCount++;
@@ -24,38 +19,6 @@ class UsersRepositoryMock implements IUsersRepository {
     this.users.push({ ...user, password });
 
     return user;
-  }
-}
-
-class LoginUserUseCase {
-  constructor(private readonly usersRepository: IUsersRepository) {}
-  async execute(data: loginDTO) {
-    const user = await this.usersRepository.findByEmail(data.email);
-
-    if (!user) {
-      throw new Error('Error in authentication, password or email incorrect');
-    }
-    const passwordMatch = await compare(data.password, user.password);
-
-    if (!passwordMatch) {
-      throw new Error('Error in authentication, password or email incorrect');
-    }
-
-    const { secret, expiresIn } = configJWT;
-    const token = JWT.sign({ id: user.id, role: user.role }, secret, {
-      expiresIn,
-    });
-
-    const res = {
-      token,
-      user: {
-        name: user.name,
-        email: user.email,
-        role: user.role,
-      },
-    };
-
-    return res;
   }
 }
 

@@ -22,6 +22,6 @@ export class UsersRepository implements IUsersRepository {
     const user = orm.create({ ..._user, password });
     await orm.save(user);
 
-    return user;
+    return { ...user, password: undefined };
   }
 }

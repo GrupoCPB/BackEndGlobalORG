@@ -12,9 +12,11 @@ class UsersRepositoryMock implements IUsersRepository {
 
     return this.users.find((u) => u.email === email);
   }
-  async save(user: User): Promise<void> {
+  async save(user: User): Promise<User> {
     this.user = user;
     this.users.push(user);
+
+    return user;
   }
 }
 

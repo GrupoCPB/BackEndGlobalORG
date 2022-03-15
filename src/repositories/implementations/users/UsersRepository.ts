@@ -1,5 +1,6 @@
 import { EntityRepository, getCustomRepository, Repository } from 'typeorm';
 
+import { hashSync } from 'bcryptjs';
 import { IUsersRepository } from '@/repositories/IUsersRepository';
 import { User } from '@/entities/Users';
 
@@ -16,7 +17,9 @@ export class UsersRepository implements IUsersRepository {
 
   async save(_user: User): Promise<User> {
     const orm = getCustomRepository(UserRepository);
-    const user = orm.create(_user);
+    const password = hashSync(_user.password, 8);
+
+    const user = orm.create({ ..._user, password });
     await orm.save(user);
 
     return user;

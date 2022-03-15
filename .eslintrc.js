@@ -18,7 +18,10 @@ module.exports = {
   rules: {
     'no-console': 'warn',
     'object-curly-newline': 'off',
-    'object-property-newline': ['off', { allowAllPropertiesOnSameLine: true }],
+    'object-property-newline': [
+      'error',
+      { allowAllPropertiesOnSameLine: true },
+    ],
     'max-classes-per-file': ['error', { ignoreExpressions: true, max: 2 }],
   },
 };

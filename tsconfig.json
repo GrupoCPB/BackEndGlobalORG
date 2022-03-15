@@ -5,7 +5,11 @@
     "allowJs": true,
 
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": ".",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "strict": false,
     "strictPropertyInitialization": false,
     "typeRoots": ["./node_modules/@types", "./src/@types"],

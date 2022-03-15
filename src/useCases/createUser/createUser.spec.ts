@@ -1,3 +1,4 @@
+import { hashSync } from 'bcryptjs';
 import { User } from '@/entities/Users';
 import { IUsersRepository } from '@/repositories/IUsersRepository';
 import { ICreateUserRequestDTO } from './createUser.dto';
@@ -14,7 +15,8 @@ class UsersRepositoryMock implements IUsersRepository {
   }
   async save(user: User): Promise<User> {
     this.user = user;
-    this.users.push(user);
+    const password = hashSync(user.password, 8);
+    this.users.push({ ...user, password });
 
     return user;
   }

@@ -1,6 +1,11 @@
 {
-  "UserReq": {
-    "required": ["name", "email", "password", "role"],
+  "CreateUserRequest": {
+    "required": [
+      "name",
+      "email",
+      "password",
+      "role"
+    ],
     "type": "object",
     "properties": {
       "name": {
@@ -21,8 +26,7 @@
       }
     }
   },
-
-  "UserRes": {
+  "CreateUserResponse": {
     "type": "object",
     "properties": {
       "name": {

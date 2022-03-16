@@ -1,13 +1,17 @@
 {
   "/users": {
     "post": {
-      "tags": ["Users"],
+      "tags": [
+        "Users"
+      ],
       "summary": "Create new user",
       "operationId": "createUser",
       "requestBody": {
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/UserReq" }
+            "schema": {
+              "$ref": "#/components/schemas/CreateUserRequest"
+            }
           }
         }
       },
@@ -16,7 +20,9 @@
           "description": "User created successfully",
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/UserRes" }
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserResponse"
+              }
             }
           }
         },
@@ -40,13 +46,15 @@
   },
   "/users/auth": {
     "post": {
-      "tags": ["Users"],
+      "tags": [
+        "Users"
+      ],
       "summary": "Users authentication",
       "requestBody": {
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/AuthenticationReq"
+              "$ref": "#/components/schemas/AuthenticationRequest"
             }
           }
         }
@@ -56,7 +64,9 @@
           "description": "Operação realizada com sucesso",
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/AuthenticationRes" }
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationResponse"
+              }
             }
           }
         },
@@ -74,6 +84,28 @@
               }
             }
           }
+        }
+      }
+    }
+  },
+  "/users/change-password": {
+    "post": {
+      "tags": [
+        "Users"
+      ],
+      "summary": "Users change password",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/changePasswordRequest"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Operação realizada com sucesso"
         }
       }
     }

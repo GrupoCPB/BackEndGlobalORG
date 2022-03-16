@@ -1,13 +1,20 @@
 {
-  "AuthenticationReq": {
+  "AuthenticationRequest": {
     "type": "object",
-    "required": ["email", "password"],
+    "required": [
+      "email",
+      "password"
+    ],
     "properties": {
-      "email": { "type": "string" },
-      "password": { "type": "string" }
+      "email": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      }
     }
   },
-  "AuthenticationRes": {
+  "AuthenticationResponse": {
     "type": "object",
     "properties": {
       "token": {

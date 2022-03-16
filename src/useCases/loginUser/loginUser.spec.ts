@@ -21,6 +21,7 @@ class UsersRepositoryMock implements IUsersRepository {
     return this.users.find((u) => u.email === email);
   }
   async save(user: User): Promise<User> { return; }
+  async updatePassword(id: string, newPassword: string): Promise<void> { return; }
 }
 
 const makeSut = async () => {

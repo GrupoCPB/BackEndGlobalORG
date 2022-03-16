@@ -20,6 +20,8 @@ class UsersRepositoryMock implements IUsersRepository {
 
     return user;
   }
+
+  async updatePassword(id: string, newPassword: string): Promise<void> { return; }
 }
 
 const makeSut = (): {

@@ -24,4 +24,11 @@ export class UsersRepository implements IUsersRepository {
 
     return { ...user, password: undefined };
   }
+
+  async updatePassword(id: string, newPassword: string):Promise<void> {
+    const orm = getCustomRepository(UserRepository);
+    const passwordHash = hashSync(newPassword, 8);
+
+    await orm.update({ id }, { password: passwordHash });
+  }
 }

@@ -1,13 +1,13 @@
 import { EntityRepository, getCustomRepository, Repository } from 'typeorm';
 
 import { hashSync } from 'bcryptjs';
-import { IUsersRepository } from '@/repositories/IUsersRepository';
 import { User } from '@/entities/Users';
+import { ICreateUserRepository } from '@/repositories/interfaces/ICreateUsersRepository';
 
 @EntityRepository(User)
 class UserRepository extends Repository<User> {}
 
-export class UsersRepository implements IUsersRepository {
+export class UsersRepository implements ICreateUserRepository {
   async findByEmail(email: string): Promise<User> {
     const orm = getCustomRepository(UserRepository);
     const user = await orm.findOne({ email });
@@ -23,12 +23,5 @@ export class UsersRepository implements IUsersRepository {
     await orm.save(user);
 
     return { ...user, password: undefined };
-  }
-
-  async updatePassword(id: string, newPassword: string):Promise<void> {
-    const orm = getCustomRepository(UserRepository);
-    const passwordHash = hashSync(newPassword, 8);
-
-    await orm.update({ id }, { password: passwordHash });
   }
 }

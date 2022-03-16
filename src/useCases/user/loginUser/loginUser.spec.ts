@@ -1,10 +1,10 @@
 import { hashSync } from 'bcryptjs';
 import { User } from '@/entities/Users';
-import { IUsersRepository } from '@/repositories/IUsersRepository';
 import { TLoginDTO } from './loginUser.dto';
 import { LoginUserUseCase } from './loginUser.usecase';
+import { ILoginUserRepository } from '@/repositories/interfaces/user/ILoginUsersRepository';
 
-class UsersRepositoryMock implements IUsersRepository {
+class LoginRepositoryMock implements ILoginUserRepository {
   private users: User[] = [
     {
       name: 'Diener',
@@ -20,11 +20,10 @@ class UsersRepositoryMock implements IUsersRepository {
 
     return this.users.find((u) => u.email === email);
   }
-  async save(user: User): Promise<User> { return; }
 }
 
 const makeSut = async () => {
-  const userRepo = new UsersRepositoryMock();
+  const userRepo = new LoginRepositoryMock();
 
   const sut = new LoginUserUseCase(userRepo);
 

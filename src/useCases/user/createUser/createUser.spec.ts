@@ -1,10 +1,10 @@
 import { hashSync } from 'bcryptjs';
 import { User } from '@/entities/Users';
-import { IUsersRepository } from '@/repositories/IUsersRepository';
+import { ICreateUserRepository } from '@/repositories/interfaces/user/ICreateUsersRepository';
 import { ICreateUserRequestDTO } from './createUser.dto';
 import { CreateUserUseCase } from './createUser.usecase';
 
-class UsersRepositoryMock implements IUsersRepository {
+class CreateUsersRepositoryMock implements ICreateUserRepository {
   private users: User[] = [];
   user?: ICreateUserRequestDTO;
   callCount = 0;
@@ -24,9 +24,9 @@ class UsersRepositoryMock implements IUsersRepository {
 
 const makeSut = (): {
   sut: CreateUserUseCase;
-  usersRepository: UsersRepositoryMock;
+  usersRepository: CreateUsersRepositoryMock;
 } => {
-  const usersRepository = new UsersRepositoryMock();
+  const usersRepository = new CreateUsersRepositoryMock();
   const sut = new CreateUserUseCase(usersRepository);
 
   return { sut, usersRepository };

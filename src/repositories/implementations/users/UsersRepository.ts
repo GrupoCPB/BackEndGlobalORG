@@ -15,11 +15,11 @@ export class UsersRepository implements IUsersRepository {
     return user;
   }
 
-  async save(_user: User): Promise<User> {
+  async save(dataUser: User): Promise<User> {
     const orm = getCustomRepository(UserRepository);
-    const password = hashSync(_user.password, 8);
+    const passwordHsh = hashSync(dataUser.password, 8);
 
-    const user = orm.create({ ..._user, password });
+    const user = orm.create({ ...dataUser, password: passwordHsh });
     await orm.save(user);
 
     return { ...user, password: undefined };

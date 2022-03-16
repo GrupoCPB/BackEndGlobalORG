@@ -1,11 +1,11 @@
-# Change Password Logged
+# Alterar Senha
 
-> ## Data
+> ## Dados
 
 - ID do usuário
 - Nova senha
 
-> ## Primary Flow
+> ## Fluxo Primário
 
 1. Obter os dados do usuário logado
 2. Alterar a senha

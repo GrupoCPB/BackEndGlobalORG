@@ -2,12 +2,12 @@ import { EntityRepository, getCustomRepository, Repository } from 'typeorm';
 
 import { hashSync } from 'bcryptjs';
 import { User } from '@/entities/Users';
-import { ICreateUserRepository } from '@/repositories/interfaces/ICreateUsersRepository';
+import { ILoginUserRepository } from '@/repositories/interfaces/user/ILoginUsersRepository';
 
 @EntityRepository(User)
 class UserRepository extends Repository<User> {}
 
-export class UsersRepository implements ICreateUserRepository {
+export class LoginRepository implements ILoginUserRepository {
   async findByEmail(email: string): Promise<User> {
     const orm = getCustomRepository(UserRepository);
     const user = await orm.findOne({ email });

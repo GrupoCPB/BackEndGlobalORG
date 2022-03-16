@@ -1,7 +1,8 @@
 declare namespace Express {
   export interface Request {
-    voluntary: {
+    user: {
       id: string;
+      role: string;
     };
   }
 }

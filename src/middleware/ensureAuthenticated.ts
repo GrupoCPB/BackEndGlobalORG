@@ -1,19 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
-import authConfig from '../config/auth';
+import { configJWT } from '../config/jwt';
 
-interface TokenVoluntary {
+type TTokenVoluntary = {
   iat: number;
   exp: number;
-  sub: string;
+  id: string;
+  role: string
 }
 
-export default function ensureAuthenticated(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-): void {
+export function ensureAuthenticated(req: Request, res: Response, next: NextFunction) {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
@@ -23,13 +20,12 @@ export default function ensureAuthenticated(
   const [, token] = authHeader.split(' ');
 
   try {
-    const decoded = verify(token, authConfig.jwt.secret);
+    const decoded = verify(token, configJWT.secret) as TTokenVoluntary;
 
-    const { sub } = decoded as TokenVoluntary;
-
-    // req.voluntary = {
-    //  id: sub,
-    //  };
+    req.user = {
+      id: decoded.id,
+      role: decoded.role
+    };
 
     return next();
   } catch (err) {

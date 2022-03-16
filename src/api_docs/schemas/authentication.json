@@ -1,10 +1,48 @@
 {
-  "Authentication": {
+  "AuthenticationReq": {
     "type": "object",
     "required": ["email", "password"],
     "properties": {
       "email": { "type": "string" },
       "password": { "type": "string" }
+    }
+  },
+  "AuthenticationRes": {
+    "type": "object",
+    "properties": {
+      "token": {
+        "type": "string",
+        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRkZGUwMmMwLWJhZDQtNDg3Yi05ZGYwLTI0YTkyYTc2MzhlYyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjQ3NDUyMzQyLCJleHAiOjE2NDc1Mzg3NDJ9.1gMtXq_jhR_BJp4LypXaruE92woUT6zHWq0BaXQ-y-g"
+      },
+      "user": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Global"
+          },
+          "email": {
+            "type": "string",
+            "example": "globalorg@globalorg.com"
+          },
+          "id": {
+            "type": "string",
+            "example": "004aadf4-8e1a-4450-905b-6039179f52da"
+          },
+          "role": {
+            "type": "string",
+            "example": "owner"
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2021-03-10T23:13:14.1272"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2021-03-10T23:17:14.1272"
+          }
+        }
+      }
     }
   }
 }

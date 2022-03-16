@@ -1,13 +1,13 @@
 {
-  "/voluntary": {
+  "/users": {
     "post": {
-      "tags": ["Voluntaries"],
+      "tags": ["Users"],
       "summary": "Create new user",
       "operationId": "createUser",
       "requestBody": {
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/Voluntary" }
+            "schema": { "$ref": "#/components/schemas/UserReq" }
           }
         }
       },
@@ -16,34 +16,38 @@
           "description": "User created successfully",
           "content": {
             "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserRes" }
+            }
+          }
+        },
+        "400": {
+          "content": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
+                  "message": {
                     "type": "string",
-                    "example": "Global"
-                  },
-                  "email": {
-                    "type": "string",
-                    "example": "globalorg@globalorg.com"
+                    "example": "User already exists."
                   }
                 }
               }
             }
           }
-        },
-        "400": { "description": "Voluntary already exists" }
+        }
       }
     }
   },
-  "/voluntary/auth": {
+  "/users/auth": {
     "post": {
-      "tags": ["Voluntaries"],
-      "summary": "Voluntary authentication",
+      "tags": ["Users"],
+      "summary": "Users authentication",
       "requestBody": {
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/Authentication" }
+            "schema": {
+              "$ref": "#/components/schemas/AuthenticationReq"
+            }
           }
         }
       },
@@ -52,16 +56,25 @@
           "description": "Operação realizada com sucesso",
           "content": {
             "application/json": {
+              "schema": { "$ref": "#/components/schemas/AuthenticationRes" }
+            }
+          }
+        },
+        "401": {
+          "content": {
+            "application/json": {
               "schema": {
                 "type": "object",
-                "example": {
-                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsImlhdCI6MTYyNTUwMDU0OSwiZXhwIjoxNjI1NTg2OTQ5LCJzdWIiOiJmOTVlNmRkMC04YTJiLTQyMTItOTcyYi1kMDAzZWUxYTlkZTMifQ.d9DODIo19g1BRvUGYKr0-ASZqsFfZTAvuAot75xbrmw"
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Incorrect email or password."
+                  }
                 }
               }
             }
           }
-        },
-        "400": { "description": "Voluntary does not exist!" }
+        }
       }
     }
   }

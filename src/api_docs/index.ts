@@ -2,13 +2,15 @@ import swaggerUI from 'swagger-ui-express';
 
 import tags from './tags.json';
 import header from './header.json';
-import { Voluntaries } from './paths';
-import { Authentication, Voluntary } from './schemas';
+import { Users } from './paths';
+import { Authentication, User } from './schemas';
 
 const servers = () => {
+  const PORT = process.env.APP_PORT;
   if (process.env.NODE_ENV !== 'production') {
-    return { servers: [{ url: 'http://localhost:3001/api' }] };
+    return { servers: [{ url: `http://localhost:${PORT}/api` }] };
   }
+
   return '';
 };
 
@@ -17,12 +19,12 @@ const doc = {
   ...tags,
   ...servers(),
   paths: {
-    ...Voluntaries,
+    ...Users,
   },
   components: {
     schemas: {
       ...Authentication,
-      ...Voluntary,
+      ...User,
     },
   },
 };

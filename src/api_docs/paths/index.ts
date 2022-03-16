@@ -1,3 +1,3 @@
-import Voluntaries from './voluntaries.json';
+import Users from './users.json';
 
-export { Voluntaries };
+export { Users };

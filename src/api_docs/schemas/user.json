@@ -1,6 +1,6 @@
 {
-  "Voluntary": {
-    "required": ["name", "email", "password"],
+  "UserReq": {
+    "required": ["name", "email", "password", "role"],
     "type": "object",
     "properties": {
       "name": {
@@ -13,11 +13,37 @@
       },
       "password": {
         "type": "string",
-        "example": "globalorg123!"
+        "example": "GlobalOrg123!"
+      },
+      "role": {
+        "type": "string",
+        "example": "owner"
+      }
+    }
+  },
+
+  "UserRes": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "example": "Global"
+      },
+      "email": {
+        "type": "string",
+        "example": "globalorg@globalorg.com"
+      },
+      "password": {
+        "type": "string",
+        "example": "GlobalOrg123!"
       },
       "id": {
         "type": "string",
         "example": "004aadf4-8e1a-4450-905b-6039179f52da"
+      },
+      "role": {
+        "type": "string",
+        "example": "owner"
       },
       "created_at": {
         "type": "string",

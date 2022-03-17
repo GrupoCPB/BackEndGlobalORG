@@ -12,10 +12,14 @@
 3. Verificar se pode fazer alteração
 4. fazer alteração
 
-> ## Fluxo Secundário: Usuário não encontrado
+> ## Fluxo Secundário: Usuário tenta trocar própria função
 
-3. Retornar erro informando que usuário não foi encontrado
+3. Retornar erro informando que não pode executar alteração
 
-> ## Fluxo Secundário: Usuário não poder executar alteração
+> ## Fluxo Secundário: Usuário tenta trocar função de superior
+
+3. Retornar erro informando que não pode executar alteração
+
+> ## Fluxo Secundário: Usuário tenta trocar para função atual
 
 3. Retornar erro informando que não pode executar alteração

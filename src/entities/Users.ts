@@ -25,7 +25,7 @@ export class User {
     password: string;
 
   @Column()
-  @IsIn(configRoles)
+  @IsIn(Object.keys(configRoles))
     role: string;
 
   @CreateDateColumn()

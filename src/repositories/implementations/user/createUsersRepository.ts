@@ -1,6 +1,7 @@
 import { EntityRepository, getCustomRepository, Repository } from 'typeorm';
 
 import { hashSync } from 'bcryptjs';
+import { validate } from 'class-validator';
 import { User } from '@/entities/Users';
 import { ICreateUserRepository } from '@/repositories/interfaces/user/ICreateUsersRepository';
 import { configBcrypt } from '@/config/bcrypt';
@@ -20,8 +21,13 @@ export class UsersRepository implements ICreateUserRepository {
     const orm = getCustomRepository(UserRepository);
     const passwordHash = hashSync(dataUser.password, configBcrypt.salt);
 
-    const user = orm.create({ ...dataUser, password: passwordHash });
-    await orm.save(user);
+    const user = orm.create(dataUser);
+    const errors = await validate(user);
+
+    if (errors.length) {
+      throw errors;
+    }
+    await orm.save({ ...user, password: passwordHash });
 
     return { ...user, password: undefined };
   }

@@ -1,3 +1,4 @@
+import { IsEmail, IsIn, MinLength } from 'class-validator';
 import {
   Entity,
   Column,
@@ -5,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { configRoles } from '@/config/roles';
 
 @Entity('users')
 export class User {
@@ -15,12 +17,15 @@ export class User {
     name: string;
 
   @Column()
+  @IsEmail({ message: 'Invalid email address.' })
     email: string;
 
   @Column()
+  @MinLength(8, { message: 'Invalid minimum quantity of characters.' })
     password: string;
 
   @Column()
+  @IsIn(configRoles)
     role: string;
 
   @CreateDateColumn()

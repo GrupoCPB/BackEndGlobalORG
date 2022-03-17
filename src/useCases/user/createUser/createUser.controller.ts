@@ -15,11 +15,17 @@ export class CreateUserController {
 
       return res.status(201).json({ user });
     } catch (err) {
-      console.log(err.message);
+      let msg = '';
+      if (err.length && err[0].constraints) {
+        const [key] = Object.keys(err[0].constraints);
+        msg = err[0].constraints[key];
+      }
+
+      console.log(msg || err.message);
 
       return res
         .status(400)
-        .json({ message: err.message || 'Unexpected error.' });
+        .json({ message: msg || err.message || 'Unexpected error.' });
     }
   }
 }

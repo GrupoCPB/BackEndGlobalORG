@@ -3,7 +3,7 @@ import swaggerUI from 'swagger-ui-express';
 import tags from './tags.json';
 import header from './header.json';
 import { Users } from './paths';
-import { Authentication, ChangePassword, User } from './schemas';
+import { Authentication, ChangePassword, ChangeRole, User } from './schemas';
 
 const servers = () => {
   const PORT = process.env.APP_PORT;
@@ -25,7 +25,8 @@ const doc = {
     schemas: {
       ...Authentication,
       ...User,
-      ...ChangePassword
+      ...ChangePassword,
+      ...ChangeRole
     },
   },
 };

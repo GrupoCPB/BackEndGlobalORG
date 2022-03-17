@@ -1,0 +1,14 @@
+{
+  "changeRoleRequest": {
+    "type": "object",
+    "required": ["idUser", "newRole"],
+    "properties": {
+      "idUser": {
+        "type": "string"
+      },
+      "newRole": {
+        "type": "string"
+      }
+    }
+  }
+}

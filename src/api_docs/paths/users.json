@@ -1,9 +1,7 @@
 {
   "/users": {
     "post": {
-      "tags": [
-        "Users"
-      ],
+      "tags": ["Users"],
       "summary": "Create new user",
       "operationId": "createUser",
       "requestBody": {
@@ -46,9 +44,7 @@
   },
   "/users/auth": {
     "post": {
-      "tags": [
-        "Users"
-      ],
+      "tags": ["Users"],
       "summary": "Users authentication",
       "requestBody": {
         "content": {
@@ -89,10 +85,8 @@
     }
   },
   "/users/change-password": {
-    "post": {
-      "tags": [
-        "Users"
-      ],
+    "put": {
+      "tags": ["Users"],
       "summary": "Users change password",
       "requestBody": {
         "content": {
@@ -106,6 +100,32 @@
       "responses": {
         "200": {
           "description": "Operação realizada com sucesso"
+        },
+        "400": {
+          "description": "Operação não concluída"
+        }
+      }
+    }
+  },
+  "/users/change-role": {
+    "put": {
+      "tags": ["Users"],
+      "summary": "Users change role",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/changeRoleRequest"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Operação realizada com sucesso"
+        },
+        "400": {
+          "description": "Operação não concluída"
         }
       }
     }

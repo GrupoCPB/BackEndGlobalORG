@@ -1,6 +1,4 @@
-export type TRequestChangeRoleDTO = {
-  userIdLogged: string;
-  roleUserLogged: string;
+export type TChangeRoleDTO = {
   userId: string;
   newRole: string;
 }

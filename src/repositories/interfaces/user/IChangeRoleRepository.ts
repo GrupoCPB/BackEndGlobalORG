@@ -1,6 +1,7 @@
 import { User } from '@/entities/Users';
+import { TChangeRoleDTO } from '@/useCases/user/changeRole/changeRole.dto';
 
-export interface changeRoleRepository{
+export interface IChangeRoleRepository{
   findByID(id: string): Promise<User>
-  updateRole(user: User, newRole: string): Promise<void>
+  updateRole(data : TChangeRoleDTO): Promise<void>
 }

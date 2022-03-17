@@ -1,8 +1,9 @@
 import { User } from '@/entities/Users';
-import { changeRoleRepository } from '@/repositories/interfaces/user/IChangeRoleRepository';
+import { IChangeRoleRepository } from '@/repositories/interfaces/user/IChangeRoleRepository';
+import { TChangeRoleDTO } from './changeRole.dto';
 import { ChangeRoleUseCase } from './changeRole.usecase';
 
-class ChangeRoleRepositoryMock implements changeRoleRepository {
+class ChangeRoleRepositoryMock implements IChangeRoleRepository {
   userWithNewRole?: User;
   users: User[] = [
     {
@@ -25,7 +26,8 @@ class ChangeRoleRepositoryMock implements changeRoleRepository {
 
     return user;
   }
-  async updateRole(user:User, newRole: string): Promise<void> {
+  async updateRole({ newRole, userId }: TChangeRoleDTO): Promise<void> {
+    const user = await this.findByID(userId);
     this.userWithNewRole = { ...user, role: newRole };
   }
 }
